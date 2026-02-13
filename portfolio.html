@@ -16,6 +16,56 @@
     .cta { background: #f4f4f4; padding: 30px; margin-top: 40px; text-align: center; }
     form input, form textarea { width: 100%; padding: 10px; margin: 10px 0; }
     .spacer { height: 400px; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      line-height: 1.6;
+    }
+
+    header a {
+      margin-right: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      color: #0066cc;
+    }
+
+    .project {
+      border: 1px solid #ddd;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+
+    button {
+      padding: 10px 15px;
+      margin-top: 10px;
+      border: none;
+      background: #0066cc;
+      color: white;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background: #004999;
+    }
+
+    .cta {
+      background: #f4f4f4;
+      padding: 30px;
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    .spacer {
+      height: 400px;
+    }
   </style>
 </head>
 
@@ -68,14 +118,18 @@
 
   <div class="spacer"></div>
 
-  <!-- Zoho SalesIQ -->
+    <!-- Zoho SalesIQ -->
   <script>
     var $zoho = $zoho || {};
-    $zoho.salesiq = $zoho.salesiq || { widgetcode:"siqe16859ff108520d9cffe2c5a01941cb5740133cb19d9be34ca6916571f686d2b", ready:function(){} };
+    $zoho.salesiq = $zoho.salesiq || {
+      widgetcode: "siqe16859ff108520d9cffe2c5a01941cb5740133cb19d9be34ca6916571f686d2b",
+      ready: function () {}
+    };
   </script>
 
   <script defer src="https://salesiq.zohopublic.com/widget?wc=siqe16859ff108520d9cffe2c5a01941cb5740133cb19d9be34ca6916571f686d2b"></script>
-<!-- passing data from salesiQ to page sense  -->
+
+  <!-- SalesIQ → PageSense Identifier Bridge -->
   <script>
     $zoho.salesiq.ready = function () {
 
