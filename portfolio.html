@@ -4,60 +4,18 @@
   <title>Creative Studio - Portfolio</title>
   <link rel="stylesheet" href="styles.css">
 
-  <!-- Zoho PageSense -->
+  <!-- Zoho PageSense CDN -->
   <script src="https://cdn.pagesense.io/js/xpertprime880/01e69347711e4e39a557de90c1ce0e8e.js"></script>
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      line-height: 1.6;
-    }
-
-    header a {
-      margin-right: 20px;
-      text-decoration: none;
-      font-weight: bold;
-      color: #0066cc;
-    }
-
-    .project {
-      border: 1px solid #ddd;
-      padding: 20px;
-      margin: 20px 0;
-      border-radius: 8px;
-    }
-
-    button {
-      padding: 10px 15px;
-      margin-top: 10px;
-      border: none;
-      background: #0066cc;
-      color: white;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-
-    button:hover {
-      background: #004999;
-    }
-
-    .cta {
-      background: #f4f4f4;
-      padding: 30px;
-      margin-top: 40px;
-      text-align: center;
-    }
-
-    form input, form textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-    }
-
-    .spacer {
-      height: 400px; 
-    }
+    body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
+    header a { margin-right: 20px; text-decoration: none; font-weight: bold; color: #0066cc; }
+    .project { border: 1px solid #ddd; padding: 20px; margin: 20px 0; border-radius: 8px; }
+    button { padding: 10px 15px; margin-top: 10px; border: none; background: #0066cc; color: white; cursor: pointer; border-radius: 4px; }
+    button:hover { background: #004999; }
+    .cta { background: #f4f4f4; padding: 30px; margin-top: 40px; text-align: center; }
+    form input, form textarea { width: 100%; padding: 10px; margin: 10px 0; }
+    .spacer { height: 400px; }
   </style>
 </head>
 
@@ -72,59 +30,72 @@
   <h1>Our Portfolio</h1>
   <p>Explore some of our latest creative projects.</p>
 
-  <!-- Scroll test space -->
   <div class="spacer"></div>
 
-  <!-- Project Section -->
   <div class="project">
     <h2>E-Commerce Website</h2>
     <p>Modern online store built with performance optimization.</p>
-    <button id="viewProject1">View Case Study</button>
+    <button>View Case Study</button>
   </div>
 
   <div class="project">
     <h2>Brand Identity Design</h2>
     <p>Complete branding package for a tech startup.</p>
-    <button id="viewProject2">View Case Study</button>
+    <button>View Case Study</button>
   </div>
 
   <div class="project">
     <h2>Mobile App UI</h2>
     <p>Clean and minimal mobile experience design.</p>
-    <button id="viewProject3">View Case Study</button>
+    <button>View Case Study</button>
   </div>
 
-  
   <div class="cta">
     <h2>Like What You See?</h2>
     <p>Let’s build something amazing together.</p>
-    <button id="hireUsBtn">Hire Us</button>
+    <button>Hire Us</button>
   </div>
 
-  
   <div style="margin-top:40px;">
     <h2>Request a Quote</h2>
-    <form id="quoteForm">
+    <form>
       <input type="text" placeholder="Your Name" required>
       <input type="email" placeholder="Your Email" required>
       <textarea placeholder="Project Details" rows="4"></textarea>
-      <button type="submit" id="submitQuote">Submit Request</button>
+      <button type="submit">Submit Request</button>
     </form>
   </div>
 
- 
   <div class="spacer"></div>
 
-  
+  <!-- Zoho SalesIQ -->
   <script>
-  window.$zoho=window.$zoho || {};
-  $zoho.salesiq=$zoho.salesiq||{ready:function(){}};
+    var $zoho = $zoho || {};
+    $zoho.salesiq = $zoho.salesiq || { widgetcode:"siqe16859ff108520d9cffe2c5a01941cb5740133cb19d9be34ca6916571f686d2b", ready:function(){} };
   </script>
 
-  <script 
-  id="zsiqscript" 
-  src="https://salesiq.zohopublic.com/widget?wc=siqe16859ff108520d9cffe2c5a01941cb5740133cb19d9be34ca6916571f686d2b" 
-  defer>
+  <script defer src="https://salesiq.zohopublic.com/widget?wc=siqe16859ff108520d9cffe2c5a01941cb5740133cb19d9be34ca6916571f686d2b"></script>
+<!-- passing data from salesiQ to page sense  -->
+  <script>
+    $zoho.salesiq.ready = function () {
+
+      $zoho.salesiq.visitor.chat(function (visitid, data) {
+        if (data.email) {
+          window.pagesense = window.pagesense || [];
+          window.pagesense.push(['identifyUser', data.email]);
+          console.log("Identified via chat:", data.email);
+        }
+      });
+
+      $zoho.salesiq.visitor.offlineMessage(function (visitid, data) {
+        if (data.email) {
+          window.pagesense = window.pagesense || [];
+          window.pagesense.push(['identifyUser', data.email]);
+          console.log("Identified via offline:", data.email);
+        }
+      });
+
+    };
   </script>
 
 </body>
