@@ -4,7 +4,7 @@
   <title>Creative Studio - Portfolio</title>
   <link rel="stylesheet" href="styles.css">
 
-  <!-- Zoho PageSense -->
+  <!-- Zoho PageSense CDN -->
   <script src="https://cdn.pagesense.io/js/xpertprime880/01e69347711e4e39a557de90c1ce0e8e.js"></script>
 
   <style>
@@ -77,34 +77,34 @@
   <div class="project">
     <h2>E-Commerce Website</h2>
     <p>Modern online store built with performance optimization.</p>
-    <button id="viewProject1">View Case Study</button>
+    <button>View Case Study</button>
   </div>
 
   <div class="project">
     <h2>Brand Identity Design</h2>
     <p>Complete branding package for a tech startup.</p>
-    <button id="viewProject2">View Case Study</button>
+    <button>View Case Study</button>
   </div>
 
   <div class="project">
     <h2>Mobile App UI</h2>
     <p>Clean and minimal mobile experience design.</p>
-    <button id="viewProject3">View Case Study</button>
+    <button>View Case Study</button>
   </div>
 
   <div class="cta">
     <h2>Like What You See?</h2>
     <p>Let’s build something amazing together.</p>
-    <button id="hireUsBtn">Hire Us</button>
+    <button>Hire Us</button>
   </div>
 
   <div style="margin-top:40px;">
     <h2>Request a Quote</h2>
-    <form id="quoteForm">
+    <form>
       <input type="text" placeholder="Your Name" required>
       <input type="email" placeholder="Your Email" required>
       <textarea placeholder="Project Details" rows="4"></textarea>
-      <button type="submit" id="submitQuote">Submit Request</button>
+      <button type="submit">Submit Request</button>
     </form>
   </div>
 
@@ -112,35 +112,32 @@
 
   <!-- Zoho SalesIQ -->
   <script>
-    window.$zoho = window.$zoho || {};
-    $zoho.salesiq = $zoho.salesiq || { ready: function() {} };
+    var $zoho = $zoho || {};
+    $zoho.salesiq = $zoho.salesiq || {
+      widgetcode: "siqe16859ff108520d9cffe2c5a01941cb5740133cb19d9be34ca6916571f686d2b",
+      ready: function () {}
+    };
   </script>
 
-  <script
-    id="zsiqscript"
-    src="https://salesiq.zohopublic.com/widget?wc=siqe16859ff108520d9cffe2c5a01941cb5740133cb19d9be34ca6916571f686d2b"
-    defer>
-  </script>
+  <script defer src="https://salesiq.zohopublic.com/widget?wc=siqe16859ff108520d9cffe2c5a01941cb5740133cb19d9be34ca6916571f686d2b"></script>
 
-  <!-- 🔥 SalesIQ → PageSense Identifier Bridge -->
+  <!-- SalesIQ → PageSense Identifier Bridge -->
   <script>
     $zoho.salesiq.ready = function () {
 
-      // When visitor starts chat and submits details
       $zoho.salesiq.visitor.chat(function (visitid, data) {
         if (data.email) {
           window.pagesense = window.pagesense || [];
           window.pagesense.push(['identifyUser', data.email]);
-          console.log("PageSense identified user via chat:", data.email);
+          console.log("Identified via chat:", data.email);
         }
       });
 
-      // When visitor submits offline message
       $zoho.salesiq.visitor.offlineMessage(function (visitid, data) {
         if (data.email) {
           window.pagesense = window.pagesense || [];
           window.pagesense.push(['identifyUser', data.email]);
-          console.log("PageSense identified user via offline form:", data.email);
+          console.log("Identified via offline:", data.email);
         }
       });
 
